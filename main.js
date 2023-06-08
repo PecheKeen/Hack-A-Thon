@@ -11,11 +11,42 @@ document.addEventListener('DOMContentLoaded', () => {
     { href: 'https://www.youtube.com/', name: 'YouTube' }]
   
   const container = document.createElement('div');
-  body.appendChild(container);  
+  body.appendChild(container);
 
+  // window.location.href
+  // document.title
+
+  const button = document.querySelector('.submit');
+  const urlInput = document.querySelector('urlInput');
+  const titleInput = document.querySelector('titleInput');
+
+  button.addEventListener('click', async () => {
+    const href = urlInput.value;
+    const title = titleInput.value;
+    // // sites.push({
+    // //   href: href,
+    // //   name: title
+    // // })
+    const anchors = document.createElement('a');
+    anchors.addEventListener('click', () => {
+      window.open(`${href}`)
+    })
+    anchors.setAttribute("href", href);
+
+    anchors.innerHTML = `<p>${href}</p>`
+    container.appendChild(anchors);
+    urlInput.value = '';
+    titleInput.value = '';
+  })
+
+
+  
   for(let i = 0; i < sites.length; i++){
     const anchors = document.createElement('a');
     // const name = document.createTextNode(sites[i].name);
+    anchors.addEventListener('click', () => {
+      window.open(`${sites[i].href}`)
+    })
     anchors.setAttribute("href", sites[i].href);
     anchors.innerHTML = `<p>${sites[i].name}</p>`
     container.appendChild(anchors);
@@ -23,3 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   
 })
+
+/*
+function logTabs(tabs) {
+  // tabs[0].url requires the `tabs` permission or a matching host permission.
+  console.log(tabs[0].url);
+}
+
+function onError(error) {
+  console.error(`Error: ${error}`);
+}
+
+browser.tabs
+  .query({ currentWindow: true, active: true })
+  .then(logTabs, onError);
+*/
