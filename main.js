@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     anchors.setAttribute("href", href);
 
-    anchors.innerHTML = `<p>${href}</p>`
+    anchors.innerHTML = `<p>${title}</p>`
     container.appendChild(anchors);
     urlInput.value = '';
     titleInput.value = '';
