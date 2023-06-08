@@ -6,37 +6,32 @@ document.addEventListener('DOMContentLoaded', () => {
   const body = document.querySelector('body');
   
   const sites = [
-    { href: 'https://calendar.google.com/', name: 'Google Calendar' },
+    { href: 'https://www.google.com/', name: 'Google Calendar' },
     { href: 'https://developer.mozilla.org/en-US/', name: 'Mdn' },
-    { href: 'https://www.youtube.com/', name: 'YouTube' }]
+    { href: 'https://www.youtube.com/', name: 'YouTube' },
+    { href: 'https://chat.openai.com/', name: 'ChatGPT' },
+    { href: 'https://www.reddit.com/r/learnprogramming/', name: 'Reddit' },
+    { href: 'https://www.w3schools.com/', name: 'W3Schools' },
+    { href: 'https://www.udemy.com/', name: 'Udemy' },
+    { href: 'https://csx.codesmith.io/', name: 'CSX' },
+    { href: 'https://www.freecodecamp.org/', name: 'FreeCodeCamp' },
+  ]
+  // google, mdn, youtube, chatgpt, reddit, w3schools, udemy, csx, freecodecamp
   
   const container = document.createElement('div');
   body.appendChild(container);
 
-  // window.location.href
-  // document.title
 
   const button = document.querySelector('.submit');
   const urlInput = document.querySelector('urlInput');
   const titleInput = document.querySelector('titleInput');
 
-  button.addEventListener('click', async () => {
-    const href = urlInput.value;
-    const title = titleInput.value;
-    // // sites.push({
-    // //   href: href,
-    // //   name: title
-    // // })
-    const anchors = document.createElement('a');
-    anchors.addEventListener('click', () => {
-      window.open(`${href}`)
-    })
-    anchors.setAttribute("href", href);
+  button.addEventListener('click', () => {
 
-    anchors.innerHTML = `<p>${title}</p>`
-    container.appendChild(anchors);
-    urlInput.value = '';
-    titleInput.value = '';
+    
+    let randomInt = Math.floor(Math.random() * 9);
+    console.log(sites[randomInt].href);
+    window.open(`${sites[randomInt].href}`);
   })
 
 
@@ -51,8 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
     anchors.innerHTML = `<p>${sites[i].name}</p>`
     container.appendChild(anchors);
   }
-
-  
 })
 
 /*
